@@ -1,0 +1,58 @@
+[project]
+name = 'countess-enrich2'
+dynamic = ["version"]
+readme = "README.md"
+authors = [
+    { name = "Nick Moore", email="nick@zoic.org" },
+]
+maintainers = [
+    { name = "Nick Moore", email="nick@zoic.org" },
+]
+description = "Implementation of the Enrich2 scoring framework for CountESS"
+requires-python = ">=3.10"
+license = { text = "BSD-3-Clause" }
+classifiers = [
+    'Development Status :: 2 - Pre-Alpha',
+    'Intended Audience :: Science/Research',
+    'License :: OSI Approved :: BSD License',
+    'Operating System :: OS Independent',
+    'Topic :: Scientific/Engineering :: Bio-Informatics',
+]
+dependencies = [
+    "countess>=0.0.83",
+    "mappy~=2.26",
+    "enrich2>=2",
+]
+
+[project.urls]
+Homepage = "https://github.com/odcambc/countess-enrich2"
+Repository = "https://github.com/odcambc/countess-enrich2.git"
+
+[project.optional-dependencies]
+dev = [
+    "countess[dev]>=0.0.83",
+]
+
+[project.entry-points.countess_plugins]
+enrich2 = "countess_enrich2:Enrich2Plugin"
+
+[tool.setuptools.dynamic]
+version = { attr = "countess_minimap2.VERSION" }
+readme = { file = "README.md", content-type="text/markdown" }
+
+[tool.pylint]
+disable = [
+    "c-extension-no-member",
+    "fixme",
+    "invalid-name",
+    "missing-class-docstring",
+    "missing-function-docstring",
+    "missing-module-docstring",
+    "no-else-return",
+    "too-many-ancestors",
+    "too-many-branches",
+]
+max-line-length = 120
+
+[tool.black]
+line-length = 120
